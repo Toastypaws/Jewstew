@@ -1,3 +1,3 @@
-res://scenes/maps/map01.tscn
-res://scenes/weapons/pistol.tscn
-res://scenes/entities/player.tscn
+res://scenes/entities/enemy.tscn
+res://scripts/enemyDummy.gd
+res://shaders/o.gdshader

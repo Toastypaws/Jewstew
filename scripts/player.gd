@@ -14,11 +14,13 @@ var currentWeapon = Global.weapons["pistol"]
 @onready var weaponCamera = $playerHead/playerCamera/weaponViewCont/weaponView/weaponCamera
 @onready var currentWeaponLocation = get_node(currentWeapon.location)
 @onready var playerAnimator = $playerAnimator
+@onready var playerCollision = $playerCollision
 
 @onready var playerHurt = $audioManager/playerHurt
 
 func playerDeath():
 	print("You are dead.")
+	playerCollision.disabled = true
 	pass
 
 func hit(damage):
