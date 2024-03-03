@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsymvnyrmvd0v"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_xgds5"]
+[ext_resource type="PackedScene" uid="uid://bn8cf0fjrfxp2" path="res://scenes/weapons/pistol.tscn" id="2_k8gi4"]
+[ext_resource type="AudioStream" uid="uid://47jkrlom6bfb" path="res://audio/sounds/player/playerHurt.wav" id="3_aq6nv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u24n0"]
+
+[sub_resource type="Environment" id="Environment_jrsdk"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
+
+[sub_resource type="Animation" id="Animation_evskl"]
+resource_name = "playerCameraShake"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("playerHead/playerCamera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0278289, 0.0892991, 0.1, 0.117922, 0.157156, 0.2, 0.248437),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.032, 0, 0.1), Vector3(-0.062, 0, 0.042), Vector3(-0.141, 0, 0.1), Vector3(-0.099, 0, 0.028), Vector3(-0.007, 0, 0.035), Vector3(-0.053, -0.05, 0.019), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("playerHead/playerCamera:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0258914, 0.0559223, 0.1, 0.248437),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0731272, 0.0461299, -0.00434934), Vector3(0.0864561, -0.0069002, -0.00199742), Vector3(-0.0344701, -0.0218918, 0.0054838), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2dcf"]
+_data = {
+"playerCameraShake": SubResource("Animation_evskl")
+}
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 5
+collision_mask = 7
+script = ExtResource("1_xgds5")
+
+[node name="playerCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_u24n0")
+
+[node name="playerHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="playerCamera" type="Camera3D" parent="playerHead"]
+cull_mask = 1048573
+
+[node name="weapons" type="Node3D" parent="playerHead/playerCamera"]
+transform = Transform3D(1, 4.65661e-10, -9.31323e-10, -2.18279e-10, 1, 0, -1.86265e-09, 0, 1, 0.0011969, -0.00468016, 0.152924)
+
+[node name="pistol" parent="playerHead/playerCamera/weapons" instance=ExtResource("2_k8gi4")]
+transform = Transform3D(0.500001, 1.88447e-09, -9.31323e-09, -5.74801e-10, 0.500001, 1.86265e-09, -8.3819e-09, 3.72529e-09, 0.500001, 0.520588, -0.48813, -0.955265)
+
+[node name="weaponViewCont" type="SubViewportContainer" parent="playerHead/playerCamera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="weaponView" type="SubViewport" parent="playerHead/playerCamera/weaponViewCont"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="weaponCamera" type="Camera3D" parent="playerHead/playerCamera/weaponViewCont/weaponView"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+cull_mask = 1047554
+environment = SubResource("Environment_jrsdk")
+
+[node name="playerAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k2dcf")
+}
+
+[node name="audioManager" type="Node3D" parent="."]
+
+[node name="playerHurt" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("3_aq6nv")
+volume_db = -20.0

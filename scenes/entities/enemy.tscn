@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwfef5plydp3m"]
+
+[ext_resource type="Script" path="res://scripts/enemyDummy.gd" id="1_6f1sv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6cpx6"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_os6pg"]
+
+[node name="zombie" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_6f1sv")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_6cpx6")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_os6pg")
