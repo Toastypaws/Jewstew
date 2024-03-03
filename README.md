@@ -1,1 +1,1 @@
-# -Inster-Game-Name-
+# -Insert-Game-Name-
