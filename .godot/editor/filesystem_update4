@@ -1,1 +1,3 @@
 res://scenes/maps/map01.tscn
+res://scenes/weapons/pistol.tscn
+res://scenes/entities/player.tscn
