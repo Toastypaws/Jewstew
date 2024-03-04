@@ -1,17 +1,17 @@
 [gd_scene load_steps=34 format=3 uid="uid://bn8cf0fjrfxp2"]
 
-[ext_resource type="Script" path="res://scripts/pistol.gd" id="1_hfkqv"]
+[ext_resource type="Script" path="res://scripts/player/weapons/pistol.gd" id="1_b5vc8"]
 [ext_resource type="AudioStream" uid="uid://cnquo75u11kci" path="res://audio/sounds/weapons/pistol/fire.wav" id="2_6hun5"]
 [ext_resource type="Texture2D" uid="uid://fxwgumx1prbq" path="res://textures/weapons/pistol/fireRing.png" id="3_y1c15"]
-[ext_resource type="Texture2D" uid="uid://n0dp1kwh55mn" path="res://models/player/weapons/pistol/colt1911_barrel_detail.png" id="4_2tapl"]
+[ext_resource type="Texture2D" uid="uid://n0dp1kwh55mn" path="res://models/entities/player/weapons/pistol/colt1911_barrel_detail.png" id="4_dcudv"]
+[ext_resource type="Texture2D" uid="uid://b6h2bxykjcoi2" path="res://models/entities/player/weapons/pistol/colt1911_metal.png" id="5_08a2o"]
 [ext_resource type="Texture2D" uid="uid://djbajdvlvmmn6" path="res://textures/gui/crosshair.png" id="5_k05s6"]
-[ext_resource type="Texture2D" uid="uid://b6h2bxykjcoi2" path="res://models/player/weapons/pistol/colt1911_metal.png" id="5_njr5q"]
-[ext_resource type="Texture2D" uid="uid://t3gco3d23uuk" path="res://models/player/weapons/pistol/colt1911_handle.png" id="6_ignpd"]
-[ext_resource type="Texture2D" uid="uid://cdbqla3vu8mvw" path="res://models/player/weapons/pistol/colt1911_screw.png" id="7_4d5ua"]
-[ext_resource type="Texture2D" uid="uid://cs73svo8y56ia" path="res://models/player/weapons/pistol/colt1911_back_upper.png" id="8_m7dmj"]
-[ext_resource type="Texture2D" uid="uid://2suj6dmxha2l" path="res://models/player/weapons/pistol/colt1911_back_lower.png" id="9_m5qq3"]
-[ext_resource type="Texture2D" uid="uid://b2sjlawq1sbhd" path="res://models/player/weapons/pistol/colt1911_grill.png" id="10_yvb3m"]
-[ext_resource type="Texture2D" uid="uid://n5m17g4ytxct" path="res://models/player/weapons/pistol/colt1911_trigger.png" id="11_cusw4"]
+[ext_resource type="Texture2D" uid="uid://t3gco3d23uuk" path="res://models/entities/player/weapons/pistol/colt1911_handle.png" id="6_ceo6d"]
+[ext_resource type="Texture2D" uid="uid://cdbqla3vu8mvw" path="res://models/entities/player/weapons/pistol/colt1911_screw.png" id="7_rjlgo"]
+[ext_resource type="Texture2D" uid="uid://cs73svo8y56ia" path="res://models/entities/player/weapons/pistol/colt1911_back_upper.png" id="8_r74ke"]
+[ext_resource type="Texture2D" uid="uid://2suj6dmxha2l" path="res://models/entities/player/weapons/pistol/colt1911_back_lower.png" id="9_6swat"]
+[ext_resource type="Texture2D" uid="uid://b2sjlawq1sbhd" path="res://models/entities/player/weapons/pistol/colt1911_grill.png" id="10_gmx3p"]
+[ext_resource type="Texture2D" uid="uid://n5m17g4ytxct" path="res://models/entities/player/weapons/pistol/colt1911_trigger.png" id="11_kvwlc"]
 
 [sub_resource type="Animation" id="Animation_7q2ld"]
 resource_name = "falling"
@@ -217,42 +217,42 @@ material = SubResource("StandardMaterial3D_ii0mc")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_030fo"]
 resource_name = "barrel_detail"
 cull_mode = 2
-albedo_texture = ExtResource("4_2tapl")
+albedo_texture = ExtResource("4_dcudv")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcnsq"]
 resource_name = "metal"
 cull_mode = 2
-albedo_texture = ExtResource("5_njr5q")
+albedo_texture = ExtResource("5_08a2o")
 roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpxe5"]
 resource_name = "handle"
 cull_mode = 2
-albedo_texture = ExtResource("6_ignpd")
+albedo_texture = ExtResource("6_ceo6d")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsoik"]
 resource_name = "screw"
 cull_mode = 2
-albedo_texture = ExtResource("7_4d5ua")
+albedo_texture = ExtResource("7_rjlgo")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v84af"]
 resource_name = "back_upper"
 cull_mode = 2
-albedo_texture = ExtResource("8_m7dmj")
+albedo_texture = ExtResource("8_r74ke")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0fub"]
 resource_name = "back_lower"
 cull_mode = 2
-albedo_texture = ExtResource("9_m5qq3")
+albedo_texture = ExtResource("9_6swat")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wse1o"]
 resource_name = "grill"
 cull_mode = 2
-albedo_texture = ExtResource("10_yvb3m")
+albedo_texture = ExtResource("10_gmx3p")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nte3q"]
@@ -428,7 +428,7 @@ shadow_mesh = SubResource("ArrayMesh_nte3q")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el0dc"]
 resource_name = "trigger"
 cull_mode = 2
-albedo_texture = ExtResource("11_cusw4")
+albedo_texture = ExtResource("11_kvwlc")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_h6vo0"]
@@ -496,7 +496,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0px02")
 
 [node name="pistol" type="Node3D"]
-script = ExtResource("1_hfkqv")
+script = ExtResource("1_b5vc8")
 
 [node name="pistolAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -511,7 +511,7 @@ stream = ExtResource("2_6hun5")
 volume_db = -20.0
 
 [node name="pistolRay" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.829093, 0.778418, -1.726)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.829093, 0.778418, 1.274)
 target_position = Vector3(0, -10000, 0)
 debug_shape_custom_color = Color(0, 0.921569, 0.921569, 1)
 
@@ -523,7 +523,8 @@ transparency = 1.0
 mesh = SubResource("QuadMesh_duwg8")
 
 [node name="pistol" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 0, 0)
+transform = Transform3D(-7.64949e-09, 0, -0.175, 0, 0.175, 0, 0.175, 0, -7.64949e-09, 0, 0, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_7hsty")
 skeleton = NodePath("")
 

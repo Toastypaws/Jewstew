@@ -3,10 +3,11 @@ extends CharacterBody3D
 const WALK_SPEED = 10.0
 const RUN_SPEED = 20.0
 const JUMP_VELOCITY = 15
+const POUND_VELOCITY = -50
 
 var speed = 20.0
 var health = 100
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = 15
 var currentWeapon = Global.weapons["pistol"]
 
 @onready var camera = $playerHead
@@ -39,7 +40,15 @@ func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _init():
+	RenderingServer.set_debug_generate_wireframes(true)
+
 func _input(event):
+	if event is InputEventKey and Input.is_key_pressed(KEY_P):
+		var vp = get_viewport()
+		vp.debug_draw = (vp.debug_draw + 1 ) % 4
+	
+	
 	if event is InputEventMouseMotion:
 		rotate(Vector3.UP, -event.relative.x * Global.mouseSensitivity)
 		camera.rotate(Vector3.RIGHT, -event.relative.y * Global.mouseSensitivity)
@@ -65,6 +74,9 @@ func _physics_process(delta):
 		speed = RUN_SPEED;
 	else:
 		speed = WALK_SPEED;
+	
+	if(Input.is_action_just_pressed("ground_pound")):
+		velocity.y = POUND_VELOCITY
 
 	var input_dir = Input.get_vector("strafe_left", "strafe_right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

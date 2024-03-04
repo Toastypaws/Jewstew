@@ -3,8 +3,10 @@ extends CharacterBody3D
 @export var player : Node3D
 @onready var collision = $collision
 @onready var navAgent = $navigation
-@onready var musicInit = $music_init
-@onready var tf2_theme = $tf2_theme
+@onready var explosion = $explosion
+@onready var playerDetector = $playerDetector
+@onready var mesh = $mesh
+@onready var animator = $animator
 
 var rng = RandomNumberGenerator.new()
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -21,10 +23,14 @@ func damage(val):
 	zombieHealth -= val
 	print("ow ", zombieHealth)
 	if zombieHealth <= 0:
+		explosion.emitting = true
 		collision.disabled = true
+		queue_free()
 		
 func updateTarget():
-	navAgent.target_position = player.global_position
+	if(playerDetector.is_colliding()):
+		if(playerDetector.get_collider().is_in_group("player")):
+			navAgent.target_position = player.global_position
 
 func hitPlayer():
 	if global_position.distance_to(player.global_position) <= hitRadius:
@@ -39,12 +45,18 @@ func hitPlayer():
 		
 
 func _ready():
-	musicInit.wait_time = rng.randi_range(0, 10)
-	musicInit.start()
+	animator.current_animation = "idle"
 
 func _process(delta):
+	playerDetector.target_position = to_local(player.global_position)
+	playerDetector.target_position.y -= 2
 	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z))
 	hitPlayer()
+	
+	if(velocity.x != 0 || velocity.z != 0):
+		animator.current_animation = "run"
+	else:
+		animator.current_animation = "idle"
 
 func _physics_process(delta):
 	var currentPosition = global_position
@@ -61,7 +73,3 @@ func _physics_process(delta):
 
 func _on_nav_cooldown_timeout():
 	updateTarget()
-
-
-func _on_music_init_timeout():
-	tf2_theme.play()

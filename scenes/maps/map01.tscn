@@ -448,3 +448,7 @@ player = NodePath("../../../player")
 [node name="zombie12" parent="enemies/group2" node_paths=PackedStringArray("player") instance=ExtResource("6_ooijb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32427, 2.30989, -8.84843)
 player = NodePath("../../../player")
+
+[node name="zombie2" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_ooijb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.39619, 4.94116, -8.18471)
+player = NodePath("../../player")

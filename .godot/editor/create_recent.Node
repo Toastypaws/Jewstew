@@ -1,6 +1,14 @@
+Node3D
+MeshInstance3D
+Node
+SpotLight3D
+OmniLight3D
+AnimationPlayer
+RayCast3D
+WorldEnvironment
+NavigationRegion3D
+GPUParticles3D
 ColorRect
 Timer
-NavigationRegion3D
 NavigationAgent3D
 AudioStreamPlayer3D
-Node3D

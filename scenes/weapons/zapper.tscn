@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://deaxhfg3nwxm1"]
 
-[ext_resource type="Script" path="res://scripts/pistol.gd" id="1_ls2ni"]
+[ext_resource type="Script" path="res://scripts/player/weapons/pistol.gd" id="1_ls2ni"]
 [ext_resource type="AudioStream" path="res://audio/sounds/weapons/pistol/zapShot.wav" id="2_7vjjn"]
 [ext_resource type="Texture2D" uid="uid://fxwgumx1prbq" path="res://textures/weapons/pistol/fireRing.png" id="3_7f4lt"]
 [ext_resource type="Texture2D" uid="uid://bm6kkkl0al5e6" path="res://textures/weapons/pistol/logo.png" id="4_xcorj"]

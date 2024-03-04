@@ -1,3 +1,9 @@
-res://scenes/entities/enemy.tscn
+res://scenes/maps/map01.tscn
 res://scripts/enemyDummy.gd
 res://shaders/o.gdshader
+res://scenes/entities/enemy.tscn
+res://scenes/entities/player.tscn
+res://scenes/weapons/pistol.tscn
+res://scenes/maps/test.tscn
+res://scenes/objects/crate.tscn
+res://scenes/objects/single_crate.tscn
