@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://bn8cf0fjrfxp2"]
 
-[ext_resource type="Script" path="res://scripts/player/weapons/pistol.gd" id="1_b5vc8"]
+[ext_resource type="Script" path="res://scripts/entities/player/weapons/pistol.gd" id="1_b5vc8"]
 [ext_resource type="AudioStream" uid="uid://cnquo75u11kci" path="res://audio/sounds/weapons/pistol/fire.wav" id="2_6hun5"]
 [ext_resource type="Texture2D" uid="uid://fxwgumx1prbq" path="res://textures/weapons/pistol/fireRing.png" id="3_y1c15"]
 [ext_resource type="Texture2D" uid="uid://n0dp1kwh55mn" path="res://models/entities/player/weapons/pistol/colt1911_barrel_detail.png" id="4_dcudv"]
@@ -140,6 +140,42 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 4.59479, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.216539), Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pistol/trigger1:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.82383e-07, 2.35003e-07, 0.87159), Vector3(6.49279e-07, 8.30305e-08, 0.0861916), Vector3(-2.82383e-07, 2.35003e-07, 0.87159)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("pistol/trigger0:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.292784, 2.71377, 0.347009), Vector3(-0.195082, 3.56967, 0.347009), Vector3(-0.292784, 2.71377, 0.347009)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("pistol/trigger0:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-3.40751e-07, -2.864e-07, 0.465165), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ubsgy"]
@@ -523,18 +559,20 @@ transparency = 1.0
 mesh = SubResource("QuadMesh_duwg8")
 
 [node name="pistol" type="MeshInstance3D" parent="."]
-transform = Transform3D(-7.64949e-09, 0, -0.175, 0, 0.175, 0, 0.175, 0, -7.64949e-09, 0, 0, 0)
+transform = Transform3D(1.6898e-07, 0, -0.175, 0, 0.175, 0, 0.175, 0, 1.6898e-07, 0, 0, 0)
 layers = 2
 mesh = SubResource("ArrayMesh_7hsty")
 skeleton = NodePath("")
 
 [node name="trigger1" type="MeshInstance3D" parent="pistol"]
-transform = Transform3D(0.712474, -0.701698, 0, 0.701698, 0.712474, 0, 0, 0, 1, 1.20722, 4.11377, 0.347009)
+transform = Transform3D(0.64361, -0.765353, 2.35003e-07, 0.765353, 0.64361, 2.82383e-07, -3.67374e-07, -1.8843e-09, 1, 1.20722, 4.11377, 0.347009)
+layers = 2
 mesh = SubResource("ArrayMesh_d4mq4")
 skeleton = NodePath("")
 
 [node name="trigger0" type="MeshInstance3D" parent="pistol"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.292784, 2.71377, 0.347009)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.292784, 2.71377, 0.347009)
+layers = 2
 mesh = SubResource("ArrayMesh_7cfj3")
 skeleton = NodePath("")
 

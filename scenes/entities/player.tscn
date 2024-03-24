@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bsymvnyrmvd0v"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_xgds5"]
+[ext_resource type="Script" path="res://scripts/entities/player/player_constroller.gd" id="1_xgds5"]
 [ext_resource type="PackedScene" uid="uid://bn8cf0fjrfxp2" path="res://scenes/weapons/pistol.tscn" id="2_k8gi4"]
 [ext_resource type="AudioStream" uid="uid://47jkrlom6bfb" path="res://audio/sounds/player/playerHurt.wav" id="3_aq6nv"]
 

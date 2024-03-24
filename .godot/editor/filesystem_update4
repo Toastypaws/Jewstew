@@ -1,9 +1,14 @@
 res://scenes/maps/map01.tscn
 res://scripts/enemyDummy.gd
-res://shaders/o.gdshader
 res://scenes/entities/enemy.tscn
 res://scenes/entities/player.tscn
 res://scenes/weapons/pistol.tscn
 res://scenes/maps/test.tscn
 res://scenes/objects/crate.tscn
 res://scenes/objects/single_crate.tscn
+res://scenes/entities/hitscanner_pistol.tscn
+res://scenes/gui/main_menu.tscn
+res://scripts/gui/main_menu.gd
+res://scripts/gui/camera_rotate.gd
+res://scripts/Global.gd
+res://scripts/entities/player/player_constroller.gd

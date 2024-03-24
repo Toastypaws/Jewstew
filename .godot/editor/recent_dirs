@@ -1,7 +1,10 @@
+res://scripts/gui
+res://scenes/gui
+res://scenes/entities
+res://shaders
 res://scenes/objects
 res://models/entities/enemies/humanoid
 /Users/tom/Developer/Godot/-Insert-Game-Name-
 /Users/tom/Documents
 res://scenes/maps
 res://scripts
-res://shaders
