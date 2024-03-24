@@ -1,8 +1,10 @@
+CanvasLayer
+Control
+Button
 Node3D
 AudioStreamPlayer
 WorldEnvironment
 Camera3D
-Button
 TextureRect
 ColorRect
 MeshInstance3D
@@ -11,4 +13,3 @@ SpotLight3D
 OmniLight3D
 AnimationPlayer
 RayCast3D
-NavigationRegion3D

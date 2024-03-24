@@ -1,14 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvcaa23avm47f"]
+[gd_scene load_steps=22 format=3 uid="uid://cvcaa23avm47f"]
 
-[ext_resource type="Texture2D" uid="uid://baifn027i0jmv" path="res://textures/environment/steelWall.png" id="2_35eyu"]
-[ext_resource type="Texture2D" uid="uid://deqmrodeoyof3" path="res://textures/environment/warehouse_tiled_floor.png" id="2_43b3l"]
-[ext_resource type="Texture2D" uid="uid://dqul8jhxyrfna" path="res://textures/environment/railing.png" id="3_cl8f7"]
-[ext_resource type="Texture2D" uid="uid://dervirejboohw" path="res://textures/environment/warehouse_ceiling.png" id="4_fvbmw"]
-[ext_resource type="PackedScene" uid="uid://bsymvnyrmvd0v" path="res://scenes/entities/player.tscn" id="4_vtnyt"]
-[ext_resource type="AudioStream" uid="uid://b78cpsqas33y4" path="res://audio/music/arabesqueOne.wav" id="5_0bowy"]
-[ext_resource type="PackedScene" uid="uid://bjwccgc1eqg1v" path="res://scenes/objects/single_crate.tscn" id="5_mkdpv"]
-[ext_resource type="PackedScene" uid="uid://cpgov85xsv31k" path="res://scenes/objects/crate.tscn" id="6_07wii"]
-[ext_resource type="PackedScene" uid="uid://bwfef5plydp3m" path="res://scenes/entities/enemy.tscn" id="6_yjm68"]
+[ext_resource type="PackedScene" uid="uid://bw2tomnsl7yqy" path="res://scenes/gui/pause_menu.tscn" id="1_56xvv"]
+[ext_resource type="Texture2D" uid="uid://dqul8jhxyrfna" path="res://textures/environment/railing.png" id="1_hoeru"]
+[ext_resource type="Texture2D" uid="uid://deqmrodeoyof3" path="res://textures/environment/warehouse_tiled_floor.png" id="2_68j18"]
+[ext_resource type="Texture2D" uid="uid://baifn027i0jmv" path="res://textures/environment/steelWall.png" id="3_civgy"]
+[ext_resource type="Texture2D" uid="uid://dervirejboohw" path="res://textures/environment/warehouse_ceiling.png" id="4_pyaj6"]
+[ext_resource type="PackedScene" uid="uid://bjwccgc1eqg1v" path="res://scenes/objects/single_crate.tscn" id="5_ckvab"]
+[ext_resource type="PackedScene" uid="uid://cpgov85xsv31k" path="res://scenes/objects/crate.tscn" id="6_v4tkk"]
+[ext_resource type="PackedScene" uid="uid://bsymvnyrmvd0v" path="res://scenes/entities/player.tscn" id="7_0f6fq"]
+[ext_resource type="PackedScene" uid="uid://bwfef5plydp3m" path="res://scenes/entities/enemy.tscn" id="8_vluu4"]
+[ext_resource type="AudioStream" uid="uid://b78cpsqas33y4" path="res://audio/music/arabesqueOne.wav" id="9_lwbge"]
 
 [sub_resource type="Environment" id="Environment_l5mgl"]
 ambient_light_source = 2
@@ -23,7 +24,7 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Arr
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fit7g"]
 transparency = 1
-albedo_texture = ExtResource("3_cl8f7")
+albedo_texture = ExtResource("1_hoeru")
 uv1_scale = Vector3(3, 1, 1)
 texture_filter = 5
 
@@ -38,20 +39,20 @@ size = Vector3(6.96992, 0.0754395, 1.60254)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8qrg"]
 resource_name = "floor"
 cull_mode = 2
-albedo_texture = ExtResource("2_43b3l")
+albedo_texture = ExtResource("2_68j18")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3mqp"]
 resource_name = "wall_panels"
 cull_mode = 2
-albedo_texture = ExtResource("2_35eyu")
+albedo_texture = ExtResource("3_civgy")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djrbj"]
 resource_name = "ceiling"
 cull_mode = 2
 shading_mode = 0
-albedo_texture = ExtResource("4_fvbmw")
+albedo_texture = ExtResource("4_pyaj6")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k8kfw"]
 _surfaces = [{
@@ -134,6 +135,11 @@ data = PackedVector3Array(9.9992, 0, -10.0007, 9.9992, 0, 9.9989, 2.9984, 0, 9.9
 
 [node name="warehouse" type="Node3D"]
 
+[node name="gui" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="main_menu" parent="gui" instance=ExtResource("1_56xvv")]
+
 [node name="map" type="Node3D" parent="."]
 
 [node name="environment" type="WorldEnvironment" parent="map"]
@@ -207,138 +213,138 @@ shape = SubResource("ConcavePolygonShape3D_gjfr5")
 
 [node name="singles" type="Node3D" parent="map/navigation/objects"]
 
-[node name="single_crate" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 1, 24.6)
 
-[node name="single_crate2" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate2" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6, 1, 21.6)
 
-[node name="single_crate3" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate3" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 21, 1, 17.6)
 
-[node name="single_crate4" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate4" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 29, 1, 24.6)
 
-[node name="single_crate5" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate5" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 35, 4, 17.6)
 
-[node name="single_crate6" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate6" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 49, 4, 23.6)
 
-[node name="single_crate7" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate7" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 73, 4, 17.6)
 
-[node name="single_crate8" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate8" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 62, 4, 26.6)
 
-[node name="single_crate9" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate9" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 39, 4, 50.6)
 
-[node name="single_crate10" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate10" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 40, 15, 6.6)
 
-[node name="single_crate11" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate11" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 1, 44, 15, 6.6)
 
-[node name="single_crate12" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate12" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 42, 15, 1.6)
 
-[node name="single_crate13" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate13" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 59, 15, -14.4)
 
-[node name="single_crate14" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate14" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 26, 15, 10.6)
 
-[node name="single_crate15" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate15" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -31, 8, -7.4)
 
-[node name="single_crate16" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate16" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -40, 8, 8.6)
 
-[node name="single_crate17" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate17" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -40, 10, 8.6)
 
-[node name="single_crate18" parent="map/navigation/objects/singles" instance=ExtResource("5_mkdpv")]
+[node name="single_crate18" parent="map/navigation/objects/singles" instance=ExtResource("5_ckvab")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -31, 8, 8.6)
 
 [node name="groups" type="Node3D" parent="map/navigation/objects"]
 
-[node name="crates" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7, 0, 6)
 
-[node name="crates2" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates2" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -7, 0, 6)
 
-[node name="crates3" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates3" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -8, 0, -8)
 
-[node name="crates4" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates4" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(7.45058e-08, 0, 1, 0, 1, 0, -1, 0, 7.45058e-08, 8, 0, -8.1)
 
-[node name="crates5" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates5" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 30, 0, 29)
 
-[node name="crates6" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates6" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 16, 0, 29)
 
-[node name="crates7" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates7" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 0, 15)
 
-[node name="crates8" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates8" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(7.45058e-08, 0, 1, 0, 1, 0, -1, 0, 7.45058e-08, 31, 0, 14.9)
 
-[node name="crates9" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates9" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 72, 3, 68.9)
 
-[node name="crates10" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates10" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 50, 3, 46.9)
 
-[node name="crates11" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates11" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 50, 3, 57.9)
 
-[node name="crates12" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates12" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 40, 3, 68.9)
 
-[node name="crates13" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates13" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 40, 14, 10.9)
 
-[node name="crates14" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates14" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 35, 14, 10.9)
 
-[node name="crates15" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates15" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 36, 14, 5.9)
 
-[node name="crates16" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates16" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 40, 14, -15.1)
 
-[node name="crates17" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates17" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 76, 14, 1.9)
 
-[node name="crates18" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates18" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 74, 14, -15.1)
 
-[node name="crates19" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates19" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 63, 14, -2.1)
 
-[node name="crates20" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates20" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 63, 14, -9.1)
 
-[node name="crates21" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates21" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 50, 14, 23.9)
 
-[node name="crates22" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates22" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 19, 14, 4.9)
 
-[node name="crates23" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates23" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 19, 14, 29.9)
 
-[node name="crates24" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates24" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 6, 14, -11.1)
 
-[node name="crates25" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates25" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -1, 14, 2.9)
 
-[node name="crates26" parent="map/navigation/objects/groups" instance=ExtResource("6_07wii")]
+[node name="crates26" parent="map/navigation/objects/groups" instance=ExtResource("6_v4tkk")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -39, 7, -5.1)
 
 [node name="lights" type="Node3D" parent="map"]
@@ -532,166 +538,166 @@ light_bake_mode = 1
 spot_range = 15.0
 spot_angle = 75.0
 
-[node name="player" parent="." instance=ExtResource("4_vtnyt")]
+[node name="player" parent="." instance=ExtResource("7_0f6fq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 0)
 
 [node name="enemies" type="Node3D" parent="."]
 
-[node name="enemy38" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy38" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1.49012e-07, 0, -1, 0, 1, 0, 1, 0, -1.49012e-07, 3.89971, 14, 1.90263)
 player = NodePath("../../player")
 
-[node name="enemy39" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy39" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1.49012e-07, 0, -1, 0, 1, 0, 1, 0, -1.49012e-07, -0.135605, 14, -11.9611)
 player = NodePath("../../player")
 
-[node name="enemy1" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy1" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 38, 3, 15)
 player = NodePath("../../player")
 
-[node name="enemy2" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy2" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36, 3, 30)
 player = NodePath("../../player")
 
-[node name="enemy3" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy3" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26, 0, 17)
 player = NodePath("../../player")
 
-[node name="enemy4" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy4" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0, 30)
 player = NodePath("../../player")
 
-[node name="enemy5" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy5" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 72, 3, 34)
 player = NodePath("../../player")
 
-[node name="enemy6" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy6" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 63, 3, 40)
 player = NodePath("../../player")
 
-[node name="enemy7" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy7" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 65, 3, 39)
 player = NodePath("../../player")
 
-[node name="enemy8" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy8" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 74, 3, 35)
 player = NodePath("../../player")
 
-[node name="enemy9" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy9" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 68, 3, 57)
 player = NodePath("../../player")
 
-[node name="enemy10" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy10" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 58, 3, 49)
 player = NodePath("../../player")
 
-[node name="enemy11" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy11" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 55, 3, 51)
 player = NodePath("../../player")
 
-[node name="enemy12" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy12" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 51, 3, 51)
 player = NodePath("../../player")
 
-[node name="enemy13" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy13" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, 42, 3, 63)
 player = NodePath("../../player")
 
-[node name="enemy14" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy14" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1, 0, -7.54979e-08, 0, 1, 0, 7.54979e-08, 0, -1, 42, 3, 54)
 player = NodePath("../../player")
 
-[node name="enemy15" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy15" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1, 3.55271e-15, -7.54979e-08, -5.33851e-08, 0.707107, 0.707106, 5.33851e-08, 0.707107, -0.707106, 42, 8, 42)
 player = NodePath("../../player")
 
-[node name="enemy16" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy16" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-1, 0, -7.54979e-08, 0, 1, 0, 7.54979e-08, 0, -1, 42, 14, 28)
 player = NodePath("../../player")
 
-[node name="enemy17" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy17" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.258819, 0, -0.965925, 0, 1, 0, 0.965925, 0, -0.258819, 16, 14, 26)
 player = NodePath("../../player")
 
-[node name="enemy18" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy18" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.258819, 0, -0.965925, 0, 1, 0, 0.965925, 0, -0.258819, 23, 14, 24)
 player = NodePath("../../player")
 
-[node name="enemy19" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy19" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.258819, 0, -0.965925, 0, 1, 0, 0.965925, 0, -0.258819, 29, 14, 28)
 player = NodePath("../../player")
 
-[node name="enemy20" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy20" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.258819, 0, -0.965925, 0, 1, 0, 0.965925, 0, -0.258819, 29, 14, 24)
 player = NodePath("../../player")
 
-[node name="enemy21" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy21" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 57.7679, 14, 20.4019)
 player = NodePath("../../player")
 
-[node name="enemy22" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy22" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 55.2321, 14, 24.4019)
 player = NodePath("../../player")
 
-[node name="enemy23" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy23" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 56.7679, 14, 27.5981)
 player = NodePath("../../player")
 
-[node name="enemy24" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy24" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 54.2321, 14, 29.5981)
 player = NodePath("../../player")
 
-[node name="enemy25" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy25" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 20.7679, 14, -9.59808)
 player = NodePath("../../player")
 
-[node name="enemy26" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy26" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 24.232, 14, -11.5981)
 player = NodePath("../../player")
 
-[node name="enemy27" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy27" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 23.768, 14, -4.40192)
 player = NodePath("../../player")
 
-[node name="enemy28" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy28" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 27.2321, 14, -6.40192)
 player = NodePath("../../player")
 
-[node name="enemy29" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy29" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 49, 14, -12)
 player = NodePath("../../player")
 
-[node name="enemy30" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy30" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 53, 14, -12)
 player = NodePath("../../player")
 
-[node name="enemy31" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy31" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 49, 14, -6)
 player = NodePath("../../player")
 
-[node name="enemy32" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy32" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 53, 14, -6)
 player = NodePath("../../player")
 
-[node name="enemy33" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy33" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 77, 14, -10)
 player = NodePath("../../player")
 
-[node name="enemy34" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy34" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 77, 14, -6)
 player = NodePath("../../player")
 
-[node name="enemy35" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy35" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 71, 14, -10)
 player = NodePath("../../player")
 
-[node name="enemy36" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_yjm68")]
+[node name="enemy36" parent="enemies" node_paths=PackedStringArray("player") instance=ExtResource("8_vluu4")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 71, 14, -6)
 player = NodePath("../../player")
 
 [node name="audioManager" type="Node3D" parent="."]
 
 [node name="arabesqueOne" type="AudioStreamPlayer" parent="audioManager"]
-stream = ExtResource("5_0bowy")
+stream = ExtResource("9_lwbge")
 volume_db = 5.0
 autoplay = true

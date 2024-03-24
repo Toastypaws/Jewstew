@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbawipulkqqio"]
+[gd_scene load_steps=8 format=3 uid="uid://cbawipulkqqio"]
 
-[ext_resource type="Script" path="res://scripts/gui/main_menu.gd" id="1_igajn"]
-[ext_resource type="Texture2D" uid="uid://7jf73jluhtnd" path="res://textures/gui/logo.png" id="1_nww0r"]
 [ext_resource type="Texture2D" uid="uid://c5op4dbknp52i" path="res://textures/gui/warehouse_panorama.png" id="1_r5ohn"]
 [ext_resource type="Script" path="res://scripts/gui/camera_rotate.gd" id="2_bou7u"]
+[ext_resource type="PackedScene" uid="uid://bw2tomnsl7yqy" path="res://scenes/gui/pause_menu.tscn" id="3_0i544"]
 [ext_resource type="AudioStream" uid="uid://crpix2v0ktwdf" path="res://audio/music/title_noise.wav" id="5_m4dxf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xmkfk"]
@@ -25,81 +24,10 @@ environment = SubResource("Environment_utngp")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("2_bou7u")
 
-[node name="gui" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_igajn")
-
-[node name="logo" type="TextureRect" parent="gui"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -417.5
-offset_top = 119.0
-offset_right = 417.5
-offset_bottom = 317.0
-grow_horizontal = 2
-texture = ExtResource("1_nww0r")
-
-[node name="button_start" type="Button" parent="gui"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -305.0
-offset_top = -50.0
-offset_right = 305.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 41
-text = "Start"
-
-[node name="button_options" type="Button" parent="gui"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -305.0
-offset_top = 76.0
-offset_right = 305.0
-offset_bottom = 176.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 41
-text = "Options
-"
-
-[node name="button_quit" type="Button" parent="gui"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -305.0
-offset_top = 204.0
-offset_right = 305.0
-offset_bottom = 304.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 41
-text = "Quit"
+[node name="menu" parent="." instance=ExtResource("3_0i544")]
 
 [node name="audio_handler" type="Node3D" parent="."]
 
 [node name="title_music" type="AudioStreamPlayer" parent="audio_handler"]
 stream = ExtResource("5_m4dxf")
 autoplay = true
-
-[connection signal="pressed" from="gui/button_start" to="gui" method="_on_button_start_pressed"]
-[connection signal="pressed" from="gui/button_quit" to="gui" method="_on_button_quit_pressed"]

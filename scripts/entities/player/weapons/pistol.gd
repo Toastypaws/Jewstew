@@ -6,8 +6,8 @@ extends Node3D
 @onready var pistolRay = $pistolRay
 @onready var player = get_owner()
 
-var pistolDamage = Global.weapons["pistol"].damage
-var fireRate = Global.weapons["pistol"].fireRate
+var pistolDamage = global.weapons["pistol"].damage
+var fireRate = global.weapons["pistol"].fireRate
 var fireCountdown = 0
 
 func gunAnimate():

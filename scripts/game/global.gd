@@ -2,6 +2,7 @@ extends Node
 
 var mouseSensitivity = 0.005
 
+const MAIN_MENU_SRC = "res://scenes/gui/main_menu.tscn";
 const WAREHOUSE_SRC = "res://scenes/maps/warehouse.tscn";
 const HILLS_SRC = "res://scenes/maps/hills.tscn";
 
